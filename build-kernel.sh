@@ -125,6 +125,14 @@ function make_config() {
 		./source/scripts/config -m I2C_HID;
 		./source/scripts/config -m I2C_SMBUS;
 		./source/scripts/config -m I2C_I801;
+		./source/scripts/config -m I2C_DESIGNWARE_CORE;
+		./source/scripts/config -m I2C_DESIGNWARE_PLATFORM;
+		./source/scripts/config -e I2C_BAYTRAIL;
+		./source/scripts/config -m I2C_PCI;
+		./source/scripts/config -e PINCTRL;
+		./source/scripts/config -e PINCTRL_INTEL;
+		./source/scripts/config -m PINCTRL_CANNONLAKE;
+
 		./source/scripts/config -e MOUSE_PS2;
 		./source/scripts/config -e MOUSE_PS2_ALPS;
 		./source/scripts/config -e MOUSE_PS2_BYD;
@@ -272,4 +280,4 @@ sbsign \
 sed "s/KVER/${KVER}/" ./gentoo-template > "/boot/loader/entries/${KVER}.conf"
 
 ## Regenerate x11 modules
-emerge --usepkg=n --getbinpkgs=n -1 @x11-module-rebuild
+emerge --usepkg=n --getbinpkg=n -1 @x11-module-rebuild

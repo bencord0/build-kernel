@@ -13,33 +13,185 @@ function make_config() {
 	(cd "${BUILD_DIR}";
 
 		# Gentoo defaults
+		./source/scripts/config --set-str LOCALVERSION ""
 		./source/scripts/config -e GENTOO_LINUX_INIT_SYSTEMD;
 		./source/scripts/config -e ZFS;
+
+		./source/scripts/config -e IKCONFIG;
+		./source/scripts/config -e IKCONFIG_PROC;
+		./source/scripts/config -m IKHEADERS;
+
+		# Platform
+		./source/scripts/config -m EFI_VARS;
+		./source/scripts/config -e FW_LOADER_PAGED_BUF;
+		./source/scripts/config -e FW_LOADER_USER_HELPER;
+		./source/scripts/config -e MICROCODE_OLD_INTERFACE;
+
+		./source/scripts/config -e UEVENT_HELPER;
+
+		./source/scripts/config -e X86_X32;
+		./source/scripts/config -e X86_X2APIC;
+		./source/scripts/config -e X86_INTEL_LPSS;
+		./source/scripts/config -e GART_IOMMU;
+
+		./source/scripts/config -e KEXEC;
+		./source/scripts/config -e CRASH_DUMP;
+
+		# Storage
+		./source/scripts/config -e BLK_DEV_NVME;
+		./source/scripts/config -e NVME_CORE;
+		./source/scripts/config -e NVME_HWMON;
+		./source/scripts/config -m MMC;
+		./source/scripts/config -m MMC_SDHCI;
+		./source/scripts/config -m MMC_USHC;
+		./source/scripts/config -m FUSE_FS
 
 		# Graphics
 		./source/scripts/config -m DRM;
 		./source/scripts/config -m DRM_I915;
+		./source/scripts/config -e FIRMWARE_EDID;
 
-		# Audio / Video 
+		# Video
 		./source/scripts/config -m MEDIA_SUPPORT;
 		./source/scripts/config -e MEDIA_CAMERA_SUPPORT;
 		./source/scripts/config -e MEDIA_USB_SUPPORT;
 		./source/scripts/config -m USB_AUDIO;
 		./source/scripts/config -m USB_GADGET;
 		./source/scripts/config -m USB_VIDEO_CLASS;
+		./source/scripts/config -m USB_G_WEBCAM;
 
-		# Wireless / Bluetooth
+		# Audio
+		./source/scripts/config -m SOUND;
+		./source/scripts/config -m SND;
+		./source/scripts/config -m SND_TIMER;
+		./source/scripts/config -m SND_PCM;
+		./source/scripts/config -m SND_HWDEP;
+		./source/scripts/config -m SND_SEQ_DEVICE;
+		./source/scripts/config -m SND_RAWMIDI;
+		./source/scripts/config -m SND_HDA_INTEL;
+		./source/scripts/config -m SND_HDA_CODEC_REALTEK;
+		./source/scripts/config -m SND_HDA_CODEC_HDMI;
+		./source/scripts/config -m SND_HDA_CORE;
+		./source/scripts/config -m SND_USB_AUDIO;
+
+		# Network / Wireless / Bluetooth
+		./source/scripts/config -m IGB;
+		./source/scripts/config -e IGB_HWMON;
+		./source/scripts/config -e IGB_DCA;
+		./source/scripts/config -m IGBVF;
+		./source/scripts/config -m USB_USBNET;
+
+		./source/scripts/config -m RFKILL;
+
+		./source/scripts/config -m IPV6_SIT;
 		./source/scripts/config -m BT;
+		./source/scripts/config -m BT_RFCOMM;
+		./source/scripts/config -e BT_RFCOMM_TTY;
+		./source/scripts/config -m BT_BNEP;
+		./source/scripts/config -e BT_BNEP_MC_FILTER;
+		./source/scripts/config -e BT_BNEP_PROTO_FILTER;
+		./source/scripts/config -m BT_HIDP;
+		./source/scripts/config -e BT_HS;
+		./source/scripts/config -e BT_LE;
+		./source/scripts/config -m BT_HCIUART;
+		./source/scripts/config -e BT_HCIUART_H4;
+		./source/scripts/config -e BT_HCIUART_BCSP;
 		./source/scripts/config -m BT_HCIBTUSB;
 
+		./source/scripts/config -m IWLWIFI;
+		./source/scripts/config -m IWLDVM;
+		./source/scripts/config -m IWLMVM;
+
 		# HID
+		./source/scripts/config -e HID;
+		./source/scripts/config -e HIDRAW;
+		./source/scripts/config -e HID_GENERIC;
+		./source/scripts/config -e INPUT_MOUSEDEV;
+		./source/scripts/config -e INPUT_MOUSEDEV_PSAUX;
+		./source/scripts/config -e INPUT_MOUSE;
+		./source/scripts/config -m INPUT_POLLDEV;
+		./source/scripts/config -m INPUT_SPARSEKMAP;
+		./source/scripts/config -m HID_ALPS;
+		./source/scripts/config -m HID_ELAN;
+		./source/scripts/config -m HID_ELECOM;
+		./source/scripts/config -m HID_ELO;
+		./source/scripts/config -m HID_HOLTEK;
+		./source/scripts/config -m HID_LENOVO;
+		./source/scripts/config -m HID_MULTITOUCH;
 		./source/scripts/config -m HID_WACOM;
+		./source/scripts/config -e USB_HID;
+		./source/scripts/config -e USB_HIDDEV;
+		./source/scripts/config -e HID_PID;
+		./source/scripts/config -m I2C_HID;
+		./source/scripts/config -m I2C_SMBUS;
+		./source/scripts/config -m I2C_I801;
+		./source/scripts/config -e MOUSE_PS2;
+		./source/scripts/config -e MOUSE_PS2_ALPS;
+		./source/scripts/config -e MOUSE_PS2_BYD;
+		./source/scripts/config -e MOUSE_PS2_SYNAPTICS;
+		./source/scripts/config -e MOUSE_PS2_TOUCHKIT;
+		./source/scripts/config -e MOUSE_PS2_TRACKPOINT;
+		./source/scripts/config -e MOUSE_PS2_ELANTECH;
+		./source/scripts/config -m MOUSE_SERIAL;
+		./source/scripts/config -m MOUSE_ELAN_I2C;
+		./source/scripts/config -e MOUSE_ELAN_I2C_I2C;
+		./source/scripts/config -e MOUSE_ELAN_I2C_SMBUS;
+		./source/scripts/config -m MOUSE_SYNAPTICS_I2C;
+		./source/scripts/config -m MOUSE_SYNAPTICS_USB;
+
+		./source/scripts/config -m USB_XHCI_HCD;
+		./source/scripts/config -m USB_XHCI_PCI;
+		./source/scripts/config -m USB_XHCI_PLATFORM;
+		./source/scripts/config -m USB_EHCI_HCD;
+		./source/scripts/config -e USB_EHCI_ROOT_HUB_TT;
+		./source/scripts/config -e USB_EHCI_TT_NEWSCHED;
+		./source/scripts/config -m USB_EHCI_PCI;
+		./source/scripts/config -m USB_EHCI_FSL;
+
+		./source/scripts/config -m TYPEC;
+		./source/scripts/config -m TYPEC_TPS6598X;
+		./source/scripts/config -m USB_ROLE_SWITCH;
+		./source/scripts/config -m USB_ROLES_INTEL_XHCI;
 
 		# Power
+		./source/scripts/config -m ACPI_AC;
+		./source/scripts/config -m ACPI_BATTERY;
+		./source/scripts/config -m ACPI_BUTTON;
+		./source/scripts/config -m ACPI_VIDEO;
+		./source/scripts/config -m ACPI_FAN;
+		./source/scripts/config -m ACPI_PROCESSOR_AGGREGATOR;
+		./source/scripts/config -m ACPI_THERMAL;
+		./source/scripts/config -e SFI;
+
+		./source/scripts/config -e CPU_FREQ_DEFAULT_GOV_USERSPACE;
+		./source/scripts/config -e CPU_FREQ_GOV_USERSPACE;
+		./source/scripts/config -e CPI_IDLE;
+		./source/scripts/config -e CPI_IDLE_GOV_LADDER;
+		./source/scripts/config -e CPI_IDLE_GOV_MENU;
+		./source/scripts/config -e CPI_IDLE_GOV_MENU;
+		./source/scripts/config -e HALTPOLL_CPUIDLE;
+		./source/scripts/config -e ARCH_CPUIDLE_HALTPOLL;
+
 		./source/scripts/config -e SUSPEND;
 		./source/scripts/config -e PM_AUTOSLEEP;
+		./source/scripts/config -e INTEL_ISH_HID;
+		./source/scripts/config -e INTEL_ISH_FIRMWARE_DOWNLOADER;
+		./source/scripts/config -m X86_SPEEDSTEP_LIB;
+
+		./source/scripts/config -m THINKPAD_ACPI;
+		./source/scripts/config -e THINKPAD_ACPI_ALSA_SUPPORT;
+		./source/scripts/config -e THINKPAD_ACPI_VIDEO;
+		./source/scripts/config -e THINKPAD_ACPI_HOTKEY_POLL;
+
+		./source/scripts/config -e X86_INTEL_LPSS;
+		./source/scripts/config -m MFD_INTEL_LPSS;
+		./source/scripts/config -m MFD_INTEL_LPSS_ACPI;
+		./source/scripts/config -m MFD_INTEL_LPSS_PCI;
 
 		# Containers
+		./source/scripts/config -m KVM;
+		./source/scripts/config -m KVM_INTEL;
+		./source/scripts/config -m KVM_AMD;
 		./source/scripts/config -e PSI;
 		./source/scripts/config -e USER_NS;
 		./source/scripts/config -e BLK_CGROUP;
@@ -51,6 +203,14 @@ function make_config() {
 		./source/scripts/config -e CGROUP_PIDS;
 		./source/scripts/config -e CPUSETS;
 		./source/scripts/config -e MEMCG;
+
+		./source/scripts/config -m MACVLAN;
+		./source/scripts/config -m MACVTAP;
+		./source/scripts/config -m VXLAN;
+		./source/scripts/config -m VETH;
+		./source/scripts/config -m TUN;
+		./source/scripts/config -m TAP;
+		./source/scripts/config -m VIRTIO_NET;
 	)
 
         make -C "${SRC_DIR}" O="${BUILD_DIR}" olddefconfig
@@ -67,21 +227,28 @@ fi
 make_config
 make -C "${BUILD_DIR}" "-j$(nproc)" modules_prepare scripts
 
-export KBUILD_OUTPUT="${BUILD_DIR}"
-env EXTRA_ECONF="--with-spl=${SRC_DIR} --enable-linux-builtin --with-spl-obj=${BUILD_DIR}" \
-        ebuild "$(portageq get_repo_path / gentoo)/sys-fs/zfs-kmod/zfs-kmod-9999.ebuild" clean configure
-(cd /var/tmp/portage/sys-fs/zfs-kmod-9999/work/zfs-kmod-9999/ && ./copy-builtin "${SRC_DIR}")
-unset KBUILD_OUTPUT
+function patch_zfs() {
+	export KBUILD_OUTPUT="${BUILD_DIR}"
+	env EXTRA_ECONF="--with-spl=${SRC_DIR} --enable-linux-builtin --with-spl-obj=${BUILD_DIR}" \
+	        ebuild "$(portageq get_repo_path / gentoo)/sys-fs/zfs-kmod/zfs-kmod-9999.ebuild" clean configure
+	(cd /var/tmp/portage/sys-fs/zfs-kmod-9999/work/zfs-kmod-9999/ && ./copy-builtin "${SRC_DIR}")
+	unset KBUILD_OUTPUT
 
-emerge --usepkg=n --getbinpkg=n sys-fs/zfs
+	emerge sys-fs/zfs
+}
+patch_zfs
+
 
 make_config
 make -C "${BUILD_DIR}" "-j$(nproc)"
 make -C "${BUILD_DIR}" modules_install
-depmod -a "${KVER}-$(uname -m)"
+
+#depmod -a "${KVER}-$(uname -m)"
+depmod -a "${KVER}"
 
 # Create the initramfs
-dracut -f "/tmp/initramfs.img" "${KVER}-$(uname -m)"
+#dracut -f "/tmp/initramfs.img" "${KVER}-$(uname -m)"
+dracut -f "/tmp/initramfs.img" "${KVER}"
 
 # Bundle boot artifacts together, the offsets are arbitrary and are only used by linuxx64.efi.stub.
 objcopy \
@@ -103,3 +270,6 @@ sbsign \
 
 ## Reconfigure the bootloader
 sed "s/KVER/${KVER}/" ./gentoo-template > "/boot/loader/entries/${KVER}.conf"
+
+## Regenerate x11 modules
+emerge --usepkg=n --getbinpkgs=n -1 @x11-module-rebuild

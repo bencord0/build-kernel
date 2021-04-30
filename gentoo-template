@@ -1,0 +1,3 @@
+title Gentoo
+version KVER
+linux /KVER.efi

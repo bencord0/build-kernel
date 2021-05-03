@@ -28,6 +28,7 @@ function make_config() {
 		./source/scripts/config -e MICROCODE_OLD_INTERFACE;
 
 		./source/scripts/config -e UEVENT_HELPER;
+		./source/scripts/config -e PCI_STUB;
 
 		./source/scripts/config -e X86_X32;
 		./source/scripts/config -e X86_X2APIC;
@@ -38,6 +39,16 @@ function make_config() {
 		./source/scripts/config -e CRASH_DUMP;
 
 		# Storage
+		./source/scripts/config -m ATA_GENERIC;
+		./source/scripts/config -e SATA_AHCI;
+		./source/scripts/config -e SATA_AHCI_PLATFORM;
+		./source/scripts/config -m PATA_ACPI;
+		./source/scripts/config -m PATA_JMICRON;
+		./source/scripts/config -m PATA_ATIIXP;
+		./source/scripts/config -e BLK_DEV_BSG;
+		./source/scripts/config -e BLK_DEV_BSGLIB;
+		./source/scripts/config -e BLK_DEV_GENERIC;
+		./source/scripts/config -e BLK_DEV_JMICRON;
 		./source/scripts/config -e BLK_DEV_NVME;
 		./source/scripts/config -e NVME_CORE;
 		./source/scripts/config -e NVME_HWMON;
@@ -49,6 +60,8 @@ function make_config() {
 		# Graphics
 		./source/scripts/config -m DRM;
 		./source/scripts/config -m DRM_I915;
+		./source/scripts/config -m DRM_KMS_HELPER;
+		./source/scripts/config -e DRM_KMS_FB_HELPER;
 		./source/scripts/config -e FIRMWARE_EDID;
 
 		# Video
@@ -130,6 +143,7 @@ function make_config() {
 		./source/scripts/config -e I2C_BAYTRAIL;
 		./source/scripts/config -m I2C_PCI;
 		./source/scripts/config -e PINCTRL;
+		./source/scripts/config -e PINCTRL_AMD;
 		./source/scripts/config -e PINCTRL_INTEL;
 		./source/scripts/config -m PINCTRL_CANNONLAKE;
 

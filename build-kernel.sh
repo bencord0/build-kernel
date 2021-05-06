@@ -216,16 +216,24 @@ function make_config() {
 		./source/scripts/config -m KVM_AMD;
 		./source/scripts/config -e PSI;
 		./source/scripts/config -e USER_NS;
+		./source/scripts/config -e OVERLAY_FS;
+
 		./source/scripts/config -e BLK_CGROUP;
 		./source/scripts/config -e CGROUP_CPUACCT;
 		./source/scripts/config -e CGROUP_DEVICE;
 		./source/scripts/config -e CGROUP_FREEZER;
+		./source/scripts/config -e CGROUP_HUGETLB;
+		./source/scripts/config -e CGROUP_NET_CLS_CGROUP;
+		./source/scripts/config -e CGROUP_NET_PRIO;
 		./source/scripts/config -e CGROUP_PERF;
 		./source/scripts/config -e CGROUP_SCHED;
 		./source/scripts/config -e CGROUP_PIDS;
 		./source/scripts/config -e CPUSETS;
 		./source/scripts/config -e MEMCG;
 
+		./source/scripts/config -m BRIDGE;
+		./source/scripts/config -m DUMMY;
+		./source/scripts/config -m IPVLAN;
 		./source/scripts/config -m MACVLAN;
 		./source/scripts/config -m MACVTAP;
 		./source/scripts/config -m VXLAN;
@@ -233,6 +241,17 @@ function make_config() {
 		./source/scripts/config -m TUN;
 		./source/scripts/config -m TAP;
 		./source/scripts/config -m VIRTIO_NET;
+
+        ./source/scripts/config -m BRIDGE_NETFILTER;
+        ./source/scripts/config -m NETFILTER_XT_MATCH_IPVS;
+        ./source/scripts/config -m IP_VS;
+        ./source/scripts/config -m IP_VS_PROTO_TCP;
+        ./source/scripts/config -m IP_VS_PROTO_UDP;
+        ./source/scripts/config -m IP_VS_NFCT;
+        ./source/scripts/config -m IP_VS_RR;
+
+        ./source/scripts/config -m BLK_DEV_THROTTLING;
+        ./source/scripts/config -m CFS_BANDWIDTH;
 	)
 
         make -C "${SRC_DIR}" O="${BUILD_DIR}" olddefconfig

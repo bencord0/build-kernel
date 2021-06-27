@@ -17,6 +17,8 @@ function make_config() {
 		./source/scripts/config -e GENTOO_LINUX_INIT_SYSTEMD;
 		./source/scripts/config -e ZFS;
 
+		./source/scripts/config -e DEBUG_INFO;
+		./source/scripts/config -e KALLSYMS_ALL;
 		./source/scripts/config -e IKCONFIG;
 		./source/scripts/config -e IKCONFIG_PROC;
 		./source/scripts/config -m IKHEADERS;
@@ -223,6 +225,8 @@ function make_config() {
 		./source/scripts/config -e CGROUP_DEVICE;
 		./source/scripts/config -e CGROUP_FREEZER;
 		./source/scripts/config -e CGROUP_HUGETLB;
+		./source/scripts/config -e CGROUP_NET_ACT_BPF;
+		./source/scripts/config -e CGROUP_NET_CLS_BPF;
 		./source/scripts/config -e CGROUP_NET_CLS_CGROUP;
 		./source/scripts/config -e CGROUP_NET_PRIO;
 		./source/scripts/config -e CGROUP_PERF;
